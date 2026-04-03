@@ -1,0 +1,364 @@
+/**
+ * @name HanakotobaTheme
+ * @description A serene Vencord theme inspired by cool blue tones and cherry blossoms. Dark navy backgrounds with periwinkle accents.
+ * @author Combined from DevilBro themes + Custom colors
+ * @version 1.0.0
+ * 
+ * SETUP INSTRUCTIONS:
+ * 1. Upload your wallpaper to Imgur (imgur.com)
+ * 2. Get the direct image URL (right-click image → Copy Image Address)
+ * 3. Replace the --background URL below with your Imgur link
+ * 4. Place this file in Vencord's themes folder
+ * 5. Enable in Vencord Settings → Themes
+ * 
+ * Based on:
+ * - BasicBackground by DevilBro (background image support)
+ * - DiscordRecolor by DevilBro (color scheme customization)
+ */
+
+/* Import the base CSS for background and transparency support */
+@import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/BasicBackground/BasicBackground.css);
+
+/* ============================================
+   THEME CONFIGURATION
+   ============================================ */
+
+:root {
+	/* ----------------------------------------
+	   BACKGROUND IMAGE - UPDATE THIS!
+	   ---------------------------------------- */
+	--background: url(https://i.imgur.com/V6kUe0w.jpeg);
+	/* 
+	   HOW TO GET YOUR IMGUR URL:
+	   1. Go to https://imgur.com/upload
+	   2. Upload your wallhaven-gpgyw3.jpg image
+	   3. Right-click the uploaded image → "Copy Image Address"
+	   4. Paste it above, replacing the placeholder URL
+	   
+	   Example: url(https://i.imgur.com/AbCdEfG.jpg)
+	*/
+	
+	--backgroundposition: center;
+	--backgroundsize: cover;
+	--backgroundblur: 0;
+	
+	/* Popout backgrounds (use same as main for consistency) */
+	--popout: var(--background);
+	--popoutposition: var(--backgroundposition);
+	--popoutsize: var(--backgroundsize);
+	--popoutblur: var(--backgroundblur);
+	
+	/* Backdrop for modals/overlays */
+	--backdrop: rgba(10, 12, 28, 0.75);
+	--backdropposition: center;
+	--backdropsize: cover;
+	--backdropblur: 3;
+	
+	/* ----------------------------------------
+	   TRANSPARENCY SETTINGS (BALANCED)
+	   ---------------------------------------- */
+	--transparencycolor: 8, 12, 28;			/* Dark navy base for transparency */
+	--transparencyalpha: 0.25;				/* Balanced overall darkness (0.25 = medium) */
+	--bordercolor: 139, 156, 240;			/* Periwinkle borders */
+	
+	/* UI Element Transparency */
+	--messagetransparency: 0.55;			/* Message boxes - more opaque for readability */
+	--guildchanneltransparency: 0.2;		/* Sidebar - slightly tinted */
+	--chatinputtransparency: 0.15;			/* Chat input - subtle tint */
+	--memberlisttransparency: 0.2;			/* Member list - matches sidebar */
+	
+	/* ----------------------------------------
+	   COLOR SCHEME (Cool Blue/Purple Tones)
+	   ---------------------------------------- */
+	
+	/* Accent Colors - Periwinkle/Lavender from the image */
+	--accentcolor: 139, 156, 240;			/* Periwinkle blue #8b9cf0 - main accent */
+	--accentcolor2: 197, 168, 255;			/* Soft lavender #c5a8ff - secondary accent */
+	--linkcolor: 165, 180, 252;			/* Light periwinkle #a5b4fc - links */
+	--mentioncolor: 199, 210, 254;			/* Soft blue #c7d2fe - mentions/highlights */
+	
+	/* Status Colors */
+	--successcolor: 129, 199, 132;			/* Soft green */
+	--warningcolor: 255, 183, 77;			/* Soft amber */
+	--dangercolor: 239, 83, 80;			/* Soft red */
+	
+	/* Text Colors - Soft whites with blue tint */
+	--textbrightest: 245, 247, 255;			/* Almost white with blue tint */
+	--textbrighter: 225, 228, 242;			/* Bright text */
+	--textbright: 195, 200, 225;			/* Medium bright */
+	--textdark: 155, 160, 190;				/* Dimmed text */
+	--textdarker: 115, 120, 150;			/* Darker text */
+	--textdarkest: 75, 80, 110;				/* Darkest text */
+	
+	/* Background Colors - Deep navy to match image */
+	--backgroundcode: 18, 20, 35;			/* Code blocks - dark navy */
+	--backgroundaccent: 25, 28, 48;			/* Accent backgrounds */
+	--backgroundprimary: 13, 15, 30;			/* Primary background - deep navy */
+	--backgroundsecondary: 10, 12, 25;		/* Secondary background */
+	--backgroundsecondaryalt: 8, 10, 22;		/* Tertiary background */
+	--backgroundtertiary: 6, 8, 18;			/* Deepest background */
+	--backgroundfloating: 5, 7, 15;			/* Floating elements */
+	
+	/* App Frame */
+	--framecolor: 139, 156, 240, 0.15;		/* Periwinkle tinted frame */
+	
+	/* ----------------------------------------
+	   TYPOGRAPHY
+	   ---------------------------------------- */
+	--font: "gg sans", "Noto Sans", "Segoe UI", sans-serif;
+	--textshadow: rgba(0, 0, 0, 0.4);		/* Soft shadow for readability */
+	
+	/* ----------------------------------------
+	   FEATURE FLAGS
+	   ---------------------------------------- */
+	--settingsicons: 1;						/* Enable settings icons */
+	
+	/* Hide BasicBackground update notice */
+	--version1_0_5: none;
+}
+
+/* ============================================
+   ADDITIONAL CUSTOM STYLES
+   ============================================ */
+
+/* Smooth transitions for theme elements */
+* {
+	transition-property: background-color, border-color, box-shadow;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-out;
+}
+
+/* Enhanced scrollbar styling to match theme */
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: rgba(8, 10, 22, 0.6);
+	border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, rgba(139, 156, 240, 0.5), rgba(197, 168, 255, 0.5));
+	border-radius: 6px;
+	border: 2px solid rgba(8, 10, 22, 0.6);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg, rgba(139, 156, 240, 0.8), rgba(197, 168, 255, 0.8));
+}
+
+/* ============================================
+   VENCORD COMPATIBILITY
+   ============================================ */
+
+/* Ensure Vencord-specific elements inherit theme */
+.vencord-theme,
+.theme-dark {
+	--background-primary: rgb(var(--backgroundprimary)) !important;
+	--background-secondary: rgb(var(--backgroundsecondary)) !important;
+	--background-secondary-alt: rgb(var(--backgroundsecondaryalt)) !important;
+	--background-tertiary: rgb(var(--backgroundtertiary)) !important;
+	--background-floating: rgb(var(--backgroundfloating)) !important;
+	--background-accent: rgb(var(--backgroundaccent)) !important;
+	
+	--text-normal: rgb(var(--textbright)) !important;
+	--text-muted: rgb(var(--textdark)) !important;
+	--text-link: rgb(var(--linkcolor)) !important;
+	--text-positive: rgb(var(--successcolor)) !important;
+	--text-warning: rgb(var(--warningcolor)) !important;
+	--text-danger: rgb(var(--dangercolor)) !important;
+	
+	--brand-500: rgb(var(--accentcolor)) !important;
+	--brand-560: rgb(var(--accentcolor)) !important;
+	--brand-600: rgba(var(--accentcolor), 0.8) !important;
+}
+
+/* ============================================
+   ENHANCED GLASSMORPHISM EFFECTS
+   ============================================ */
+
+/* Main chat area glass effect */
+.chatContent_a7d72e,
+.messagesWrapper_e2e187 {
+	background: rgba(var(--transparencycolor), var(--messagetransparency)) !important;
+	backdrop-filter: blur(8px);
+}
+
+/* Sidebar glass effect */
+.sidebar_a4d4d9,
+.container_ee69e0 {
+	background: rgba(var(--transparencycolor), var(--guildchanneltransparency)) !important;
+	backdrop-filter: blur(5px);
+}
+
+/* Member list glass effect */
+.membersWrap_cbd271,
+.container_cbd271 {
+	background: rgba(var(--transparencycolor), var(--memberlisttransparency)) !important;
+	backdrop-filter: blur(5px);
+}
+
+/* Chat input area */
+.channelTextArea_a7d72e,
+.scrollableContainer_d0696b {
+	background: rgba(var(--transparencycolor), var(--chatinputtransparency)) !important;
+}
+
+/* Server list - with visible contrast border */
+.guilds_a4d4d9 {
+	background: rgba(var(--transparencycolor), 0.45) !important;
+	border-right: 3px solid rgba(var(--accentcolor), 0.6);
+	box-shadow: 3px 0 15px rgba(0, 0, 0, 0.5), inset -2px 0 10px rgba(139, 156, 240, 0.1);
+}
+
+/* ============================================
+   CUSTOM ACCENT STYLING
+   ============================================ */
+
+/* Selection highlighting */
+::selection {
+	background: rgba(139, 156, 240, 0.4);
+	color: rgb(var(--textbrightest));
+}
+
+/* Mention pills */
+.mentioned_d5deea {
+	background: rgba(199, 210, 254, 0.15) !important;
+	border-left: 3px solid rgb(var(--mentioncolor));
+}
+
+.mentioned_d5deea::before {
+	background: rgb(var(--mentioncolor)) !important;
+}
+
+/* Hover effects for interactive elements */
+.interactive_f5eb4b:hover,
+.interactive_c91bad:hover {
+	background: rgba(139, 156, 240, 0.2) !important;
+	transform: translateX(2px);
+	transition: all 0.2s ease;
+}
+
+/* Button styling */
+.button_dd4f85.lookFilled_dd4f85.colorBrand_dd4f85 {
+	background: linear-gradient(135deg, rgb(var(--accentcolor)), rgb(var(--accentcolor2))) !important;
+	border-radius: 8px;
+}
+
+.button_dd4f85.lookFilled_dd4f85.colorBrand_dd4f85:hover {
+	background: linear-gradient(135deg, rgb(var(--accentcolor2)), rgb(var(--accentcolor))) !important;
+	box-shadow: 0 4px 15px rgba(139, 156, 240, 0.4);
+}
+
+/* ============================================
+   MESSAGE STYLING
+   ============================================ */
+
+/* Message bubbles - full width with increased opacity */
+.message_d5deea {
+	border-radius: 0;
+	margin: 0 !important;
+	padding: 8px 16px !important;
+	transition: all 0.2s ease;
+	background: rgba(var(--transparencycolor), var(--messagetransparency)) !important;
+	border-bottom: 1px solid rgba(var(--bordercolor), 0.1);
+}
+
+.message_d5deea:hover {
+	background: rgba(var(--transparencycolor), 0.65) !important;
+}
+
+/* Group start messages (first message in a group) */
+.message_d5deea.groupStart_d5deea {
+	border-top: 1px solid rgba(var(--accentcolor), 0.15);
+}
+
+/* Message content wrapper */
+.contents_ec86aa {
+	padding-left: 0 !important;
+}
+
+/* Username colors */
+.username_f9f2ca,
+.username_d30d99 {
+	font-weight: 600;
+}
+
+/* ============================================
+   CHANNEL/GUILD STYLING
+   ============================================ */
+
+/* Selected channel */
+.modeSelected_d8bfb3 .link_d8bfb3 {
+	background: linear-gradient(90deg, rgba(139, 156, 240, 0.3), rgba(197, 168, 255, 0.15)) !important;
+	border-left: 3px solid rgb(var(--accentcolor));
+}
+
+/* Unread indicator */
+.unread_d8bfb3 {
+	background: rgb(var(--accentcolor)) !important;
+	box-shadow: 0 0 8px rgba(139, 156, 240, 0.6);
+}
+
+/* ============================================
+   SETTINGS & MODALS
+   ============================================ */
+
+/* Settings sidebar */
+.sidebarRegionScroller_c25c6d {
+	background: rgba(var(--transparencycolor), 0.4) !important;
+}
+
+/* Modal backdrops */
+.root_f9a4c9,
+.layer_c9e2da {
+	backdrop-filter: blur(var(--backdropblur));
+}
+
+/* ============================================
+   TYPING & ACTIVITY INDICATORS
+   ============================================ */
+
+/* Typing indicator dots */
+.dots_ce0450 circle {
+	fill: rgb(var(--accentcolor)) !important;
+}
+
+/* Activity indicators */
+.activityUserPopoutV2_d5089b,
+.activityProfileV2_d5089b {
+	background: rgba(139, 156, 240, 0.15) !important;
+	border-radius: 8px;
+}
+
+/* ============================================
+   REACTIONS & EMOJI
+   ============================================ */
+
+/* Reaction buttons */
+.reaction_f61c73 {
+	background: rgba(139, 156, 240, 0.1) !important;
+	border: 1px solid rgba(139, 156, 240, 0.3);
+	border-radius: 8px;
+}
+
+.reaction_f61c73.reactionMe_f61c73 {
+	background: rgba(139, 156, 240, 0.25) !important;
+	border-color: rgb(var(--accentcolor));
+}
+
+/* ============================================
+   VOICE & VIDEO
+   ============================================ */
+
+/* Voice connected badge */
+.iconBadge_fc4f04 {
+	background: rgb(var(--accentcolor)) !important;
+}
+
+/* Speaking indicator */
+.border_d48a51.speaking_d48a51 {
+	box-shadow: inset 0 0 0 2px rgb(var(--accentcolor)), inset 0 0 0 4px rgb(var(--backgroundprimary)) !important;
+}
